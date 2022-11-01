@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import * as bodyParser from 'body-parser'
 import { config } from './data-source'
 import { routes } from './routes'
-import { User } from './entity/User.entity'
+import { Car } from './entity/Car.entity'
 ;(async () => {
   try {
     await config.initialize()
@@ -36,23 +36,6 @@ import { User } from './entity/User.entity'
 
     // start express server
     app.listen(3000)
-
-    // insert new users for test
-    await config.manager.save(
-      config.manager.create(User, {
-        firstName: 'Timber',
-        lastName: 'Saw',
-        age: 27
-      })
-    )
-
-    await config.manager.save(
-      config.manager.create(User, {
-        firstName: 'Phantom',
-        lastName: 'Assassin',
-        age: 24
-      })
-    )
 
     console.log(
       'Express server has started on port 3000. Open http://localhost:3000/users to see results'

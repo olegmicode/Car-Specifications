@@ -2,15 +2,7 @@ import 'dotenv/config'
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 
-console.log(
-  '[PROCESS_ENV]',
-  process.env.MYSQL_HOST,
-  process.env.MYSQL_PORT,
-  process.env.MYSQL_USER,
-  process.env.MYSQL_PASSWORD,
-  process.env.MYSQL_DB
-)
-export const AppDataSource = new DataSource({
+export const config = new DataSource({
   type: 'mysql',
   host: process.env.MYSQL_HOST,
   port: Number(process.env.MYSQL_PORT),

@@ -1,18 +1,17 @@
-import * as express from 'express'
+import express, { Request, Response } from 'express'
 import * as bodyParser from 'body-parser'
-import { Request, Response } from 'express'
-import { AppDataSource } from './data-source'
-import { Routes } from './routes'
+import { config } from './data-source'
+import { routes } from './routes'
 import { User } from './entity/User.entity'
-
-AppDataSource.initialize()
-  .then(async () => {
+;(async () => {
+  try {
+    await config.initialize()
     // create express app
     const app = express()
     app.use(bodyParser.json())
 
     // register express routes from defined application routes
-    Routes.forEach((route) => {
+    routes.forEach((route) => {
       ;(app as any)[route.method](
         route.route,
         (req: Request, res: Response, next: Function) => {
@@ -22,10 +21,8 @@ AppDataSource.initialize()
             next
           )
           if (result instanceof Promise) {
-            result.then((result) =>
-              result !== null && result !== undefined
-                ? res.send(result)
-                : undefined
+            result.then((r) =>
+              r !== null && r !== undefined ? r.send(r) : undefined
             )
           } else if (result !== null && result !== undefined) {
             res.json(result)
@@ -41,16 +38,16 @@ AppDataSource.initialize()
     app.listen(3000)
 
     // insert new users for test
-    await AppDataSource.manager.save(
-      AppDataSource.manager.create(User, {
+    await config.manager.save(
+      config.manager.create(User, {
         firstName: 'Timber',
         lastName: 'Saw',
         age: 27
       })
     )
 
-    await AppDataSource.manager.save(
-      AppDataSource.manager.create(User, {
+    await config.manager.save(
+      config.manager.create(User, {
         firstName: 'Phantom',
         lastName: 'Assassin',
         age: 24
@@ -60,5 +57,7 @@ AppDataSource.initialize()
     console.log(
       'Express server has started on port 3000. Open http://localhost:3000/users to see results'
     )
-  })
-  .catch((error) => console.log(error))
+  } catch (error) {
+    console.log(error)
+  }
+})()

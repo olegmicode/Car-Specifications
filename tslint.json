@@ -17,7 +17,12 @@
     "import-name": false,
     "no-console": false,
     "object-literal-sort-keys": false,
-    "max-classes-per-file": false
+    "max-classes-per-file": false,
+    "semicolon": false,
+    "trailing-comma": false,
+    "whitespace": false,
+    "ban-types": false,
+    "ter-arrow-parens": false
   },
   "rulesDirectory": []
 }

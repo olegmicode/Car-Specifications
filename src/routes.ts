@@ -1,28 +1,28 @@
-import { UserController } from './controller/UserController'
+import { CarController } from './controller/CarController'
 
 export const routes = [
   {
     method: 'get',
-    route: '/users',
-    controller: UserController,
+    route: '/cars',
+    controller: CarController,
     action: 'all'
   },
   {
     method: 'get',
-    route: '/users/:id',
-    controller: UserController,
+    route: '/cars/:id',
+    controller: CarController,
     action: 'one'
   },
   {
     method: 'post',
-    route: '/users',
-    controller: UserController,
+    route: '/cars',
+    controller: CarController,
     action: 'save'
   },
   {
     method: 'delete',
-    route: '/users/:id',
-    controller: UserController,
+    route: '/cars/:id',
+    controller: CarController,
     action: 'remove'
   }
 ]

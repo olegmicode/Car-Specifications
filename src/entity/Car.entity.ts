@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn
+} from 'typeorm'
+import { Color } from './Color.entity'
+import { Engine } from './Engine.entity'
 
 @Entity()
 export class Car {
@@ -6,11 +14,13 @@ export class Car {
   id: number
 
   @Column()
-  firstName: string
+  brand: string
 
-  @Column()
-  lastName: string
+  @OneToOne(() => Engine)
+  @JoinColumn()
+  engine: Engine
 
-  @Column()
-  age: number
+  @OneToOne(() => Color)
+  @JoinColumn()
+  color: Color
 }

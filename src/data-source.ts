@@ -1,17 +1,14 @@
-import 'dotenv/config'
-import 'reflect-metadata'
-import { DataSource } from 'typeorm'
+import "dotenv/config";
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { Field } from "./entity/Field.entity";
+import { Spec } from "./entity/Spec.entity";
+import { CreateCollectionsAndIndexes1667482571375 } from "./migration/1667482571375-CreateCollectionsAndIndexes";
 
-export const config = new DataSource({
-  type: 'mysql',
-  host: process.env.MYSQL_HOST,
-  port: Number(process.env.MYSQL_PORT),
-  username: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB,
-  synchronize: true,
-  logging: false,
-  entities: [__dirname + '../**/*.entity{.ts}'],
-  migrations: ['src/migrations/*.ts'],
-  subscribers: []
-})
+export const dataSource = new DataSource({
+  type: "mongodb",
+  url: process.env.MONGODB_URL,
+  entities: [Field, Spec],
+  synchronize: false,
+  migrations: [CreateCollectionsAndIndexes1667482571375],
+});

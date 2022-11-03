@@ -1,8 +1,8 @@
-import * as express from "express";
-import { Request } from "express";
-import { HttpError } from "restify-errors";
-import { fieldRouter } from "./handler/field.handler";
-import { specRouter } from "./handler/spec.handler";
+import * as express from 'express';
+import { Request } from 'express';
+import { HttpError } from 'restify-errors';
+import { fieldRouter } from './handler/field.handler';
+import { specRouter } from './handler/spec.handler';
 
 export const router = express.Router();
 
@@ -18,7 +18,7 @@ router.use(specRouter);
 router.use((err: Error, req, res, _next) => {
   let error = err;
   if (err instanceof HttpError) {
-    error = err["jse_info"];
+    error = err['jse_info'];
     res.status(err.statusCode);
   } else {
     console.log(err);

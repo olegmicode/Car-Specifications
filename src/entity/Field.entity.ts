@@ -1,4 +1,4 @@
-import { Entity, ObjectID, ObjectIdColumn, Column, Unique } from "typeorm";
+import { Entity, ObjectID, ObjectIdColumn, Column, Unique } from 'typeorm';
 
 @Entity()
 export class FieldOption {

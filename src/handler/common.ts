@@ -1,6 +1,6 @@
-import { Schema, checkSchema, validationResult } from "express-validator";
-import { Request } from "express";
-import * as Errors from "restify-errors";
+import { Schema, checkSchema, validationResult } from 'express-validator';
+import { Request } from 'express';
+import * as Errors from 'restify-errors';
 
 export function schemaValidation(schema: Schema) {
   return [

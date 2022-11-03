@@ -1,13 +1,13 @@
-import { getRepository } from "typeorm";
-import * as errors from "restify-errors";
+import { getRepository } from 'typeorm';
+import * as errors from 'restify-errors';
 
-import { Spec } from "../entity/Spec.entity";
-import { dataSource } from "../data-source";
+import { Spec } from '../entity/Spec.entity';
+import { dataSource } from '../data-source';
 
 export class SpecController {
   private specRepository = dataSource.getRepository(Spec);
 
-  async create(data: Omit<Spec, "_id">) {
+  async create(data: Omit<Spec, '_id'>) {
     return await this.create(data);
   }
 

@@ -8,6 +8,7 @@
       "@types/node": "^16.11.10",
       "@types/restify-errors": "^4.3.4",
       "nodemon": "^2.0.20",
+      "prettier": "^2.7.1",
       "ts-node": "10.7.0",
       "typescript": "4.5.2"
    },
@@ -27,6 +28,7 @@
    "scripts": {
       "start": "nodemon -e ts --exec \"tsc & node ./build/index\"",
       "tsc": "tsc",
+      "prettier": "prettier --loglevel warn --parser=typescript src/**/*.ts{,x} --write",
       "typeorm": "typeorm-ts-node-commonjs",
       "migrate": "typeorm migration:run --dataSource ./build/data-source.js",
       "lint": "tslint -p tsconfig.json -c tslint.json"

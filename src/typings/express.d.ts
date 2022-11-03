@@ -1,7 +1,7 @@
-import * as core from "express-serve-static-core";
-import { Spec } from "../entity/Spec.entity";
+import * as core from 'express-serve-static-core';
+import { Spec } from '../entity/Spec.entity';
 
-declare module "express" {
+declare module 'express' {
   export interface Request<
     P = core.ParamsDictionary,
     ResBody = any,

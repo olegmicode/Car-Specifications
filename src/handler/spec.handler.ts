@@ -24,15 +24,11 @@ const specSchema: Schema = {
   },
 };
 
-router.use('*/specs/:specId/*', setSpec);
+router.use('/specs/:specId', setSpec);
 
 router.get('/specs', async function (req, res, next) {
   const controller = new SpecController();
   res.json(await controller.all());
-});
-
-router.get('/specs/:specId', async function (req: Request, res, next) {
-  res.json(req.entityParams.spec);
 });
 
 router.put('/specs/:specId', ...checkSchema(specSchema), async function (req: Request, res, next) {
@@ -57,10 +53,12 @@ router.post('/specs', ...checkSchema(specSchema), async function (req, res, next
   const { name, fieldValues } = req.body;
   const controller = new SpecController();
 
-  await controller.create({
-    name,
-    fieldValues,
-  });
+  res.json(
+    await controller.create({
+      name,
+      fieldValues,
+    })
+  );
 });
 
 export { router as specRouter };

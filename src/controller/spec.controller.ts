@@ -8,7 +8,8 @@ export class SpecController {
   private specRepository = dataSource.getRepository(Spec);
 
   async create(data: Omit<Spec, '_id'>) {
-    return await this.create(data);
+    const spec = this.specRepository.create(data);
+    return await this.specRepository.save(spec);
   }
 
   async all() {
@@ -16,7 +17,7 @@ export class SpecController {
   }
 
   async update(spec: Spec, updateData: Partial<Spec>) {
-    Object.assign(spec);
+    Object.assign(spec, updateData);
     return await this.specRepository.save(spec);
   }
 

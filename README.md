@@ -32,8 +32,14 @@ Code requirements: Typescript, OOP, any UI framework. The application should be 
 ![Mockup Image](./mockup.png)
 UI requirements: minimal interactivity, UI has the smallest priority.
 
-## Steps to run this project:
+## Prerequisites
 
-1. Run `npm i` command
-2. Setup database settings inside `.env` or `data-source.ts` file
-3. Run `npm start` command
+- MongoDB v5
+
+## How to setup
+
+1. `npm i` to install dependencies
+2. Configure .env file to set database connection string
+3. `npm run migrate` to init database
+4. `npm run seed` to seed the inital records
+5. `npm start` to start the project
